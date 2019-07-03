@@ -39,28 +39,43 @@ public class Websocket {
     }
 
     @OnOpen
-    public void onOpen(Session session, @PathParam("username") String username) {
-        this.session = session;
-        this.username = username;
+    public void onOpen(Session session){
+        this.session=session;
         websockets.add(this);
-        routetab.put(session.getId(),username);
-        String content = username + "进入了聊天室，当前人数："+ websockets.size();
-        broadcast(content);
-        //broadcast(routetab.toString());
+        broadcast("大家好");
     }
 
+//    @OnOpen
+//    public void onOpen(Session session, @PathParam("username") String username) {
+//        this.session = session;
+//        this.username = username;
+//        websockets.add(this);
+//        routetab.put(session.getId(),username);
+//        String content = username + "进入了聊天室，当前人数："+ websockets.size();
+//        broadcast(content);
+//        //broadcast(routetab.toString());
+//    }
+
+//    @OnClose
+//    public void onClose() {
+//        websockets.remove(this);
+//        routetab.remove(session.getId());
+//        String content = username + "离开了聊天室，当前人数："+ websockets.size();
+//        broadcast(content);
+//        //broadcast(routetab.toString());
+//    }
     @OnClose
-    public void onClose() {
+    public void onClose(){
         websockets.remove(this);
-        routetab.remove(session.getId());
-        String content = username + "离开了聊天室，当前人数："+ websockets.size();
-        broadcast(content);
-        //broadcast(routetab.toString());
+        broadcast("走了");
     }
 
     @OnMessage
+//    public void onMessage(String content) {
+//        broadcast(username+content);
     public void onMessage(String content) {
-        broadcast(username+content);
+        System.out.println(content);
+        broadcast(content);
     }
 //    @OnMessage
 //    public void onMessage(String json){
