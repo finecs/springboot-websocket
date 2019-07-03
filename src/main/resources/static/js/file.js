@@ -16,6 +16,7 @@ function upload(file) {
             contentType: false, // 告诉jQuery不要去设置Content-Type请求头
             success: function(result) {
                 //前端对result进行处理
+                websocket.send("<li>上传了文件<br /><a href=" + result.url + ">" + result.name + '</a></li > ');
             }
         })
     }

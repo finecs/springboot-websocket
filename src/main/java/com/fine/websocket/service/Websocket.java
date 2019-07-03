@@ -74,7 +74,6 @@ public class Websocket {
 //    public void onMessage(String content) {
 //        broadcast(username+content);
     public void onMessage(String content) {
-        System.out.println(content);
         broadcast(content);
     }
 //    @OnMessage
