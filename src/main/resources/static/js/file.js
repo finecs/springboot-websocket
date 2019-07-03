@@ -9,14 +9,15 @@ function upload(file) {
     if (temp) {
         formData.append('file', temp)
         $.ajax({
-            url: "http://127.0.0.1:8080/upload",
+            url: "http://" + window.location.href.split('/')[2] + "/upload",
             type: "POST",
             data: formData,
             processData: false, // 告诉jQuery不要去处理发送的数据
-            contentType: false, // 告诉jQuery不要去设置Content-Type请求头
+            contentType: false,
             success: function(result) {
                 //前端对result进行处理
-                websocket.send("<li>上传了文件<br /><a href=" + result.url + ">" + result.name + '</a></li > ');
+                websocket.send("<li><span>上传了文件</span><br /><a href=" + result.url + " download>" + result.name + '</a></li > ');
+            //    不加download会报错，点击下载立即退出聊天室
             }
         })
     }
