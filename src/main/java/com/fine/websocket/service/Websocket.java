@@ -46,7 +46,7 @@ public class Websocket {
         routetab.put(session.getId(),username);
         String content = username + "进入了聊天室，当前人数："+ websockets.size();
         broadcast(content);
-        broadcast(routetab.toString());
+        //broadcast(routetab.toString());
     }
 
     @OnClose
@@ -55,7 +55,7 @@ public class Websocket {
         routetab.remove(session.getId());
         String content = username + "离开了聊天室，当前人数："+ websockets.size();
         broadcast(content);
-        broadcast(routetab.toString());
+        //broadcast(routetab.toString());
     }
 
     @OnMessage
