@@ -5,12 +5,13 @@ import org.springframework.stereotype.Component;
 import javax.websocket.*;
 import javax.websocket.server.PathParam;
 import javax.websocket.server.ServerEndpoint;
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.CopyOnWriteArraySet;
 
 //请求路径
-@ServerEndpoint("/websocket")
+@ServerEndpoint("/websocket/{username}")
 //注册到spring容器中
 @Component
 public class Websocket {
@@ -23,8 +24,8 @@ public class Websocket {
 
     //在线列表,列表必须绑定用户名和会话，前端点击就能进入私聊会话
 
-    //路由表,sessionid和用户名绑定，路由表即时会话列表
-    private static Map<String, String> routetab = new HashMap<>();
+    //路由表,session和用户名绑定，路由表即时会话列表
+    private static Map<Session, String> routetab = new HashMap<>();
 
     //对指定session发送消息，即对指定用户发送消息
     public void send(String content,Session session) {
@@ -32,67 +33,49 @@ public class Websocket {
     }
 
     //广播
-    public  void broadcast(String message){
+    public  void broadcast(String message) throws IOException {
         for (Websocket websocket : websockets) {
-            websocket.session.getAsyncRemote().sendText(message);
+            synchronized (session) {
+                websocket.session.getBasicRemote().sendText(message);
+            }
         }
     }
 
     @OnOpen
-    public void onOpen(Session session){
-        this.session=session;
+    public void onOpen(Session session, @PathParam("username") String username) throws IOException {
+        this.session = session;
+        this.username = username;
         websockets.add(this);
-        broadcast("大家好");
+        routetab.put(session,username);
+        String content = username + "进入了聊天室，当前人数："+ websockets.size();
+        Message message=new Message();
+        message.setSender("系统消息：");
+        message.setContent(content);
+        broadcast(message.toJson());
+        broadcast(routetab.toString());
     }
 
-//    @OnOpen
-//    public void onOpen(Session session, @PathParam("username") String username) {
-//        this.session = session;
-//        this.username = username;
-//        websockets.add(this);
-//        routetab.put(session.getId(),username);
-//        String content = username + "进入了聊天室，当前人数："+ websockets.size();
-//        broadcast(content);
-//        //broadcast(routetab.toString());
-//    }
-
-//    @OnClose
-//    public void onClose() {
-//        websockets.remove(this);
-//        routetab.remove(session.getId());
-//        String content = username + "离开了聊天室，当前人数："+ websockets.size();
-//        broadcast(content);
-//        //broadcast(routetab.toString());
-//    }
     @OnClose
-    public void onClose(){
+    public void onClose() throws IOException {
         websockets.remove(this);
-        broadcast("走了");
+        routetab.remove(session);
+        Message message=new Message();
+        String content = username + "离开了聊天室，当前人数："+ websockets.size();
+        message.setContent(content);
+        message.setSender("系统消息：");
+        broadcast(message.toJson());
+        broadcast(routetab.toString());
     }
 
     @OnMessage
-//    public void onMessage(String content) {
-//        broadcast(username+content);
-    public void onMessage(String content) {
-        broadcast(content);
-    }
-//    @OnMessage
-//    public void onMessage(String json){
-//        Message message = gson.fromJson(json, Message.class);
-//        if (message.getType() ==1) {
-//            Message groupMessage = new Message();
-//            groupMessage.setType(message.getType());
-//            groupMessage.setNames(map);
-//            groupMessage.setContent(message.getContent());
-//            broadcast(groupMessage.toJson());
-//        }else {
-//            Message privateMessage = new Message();
-//            privateMessage.setType(message.getType());
-//            privateMessage.setNames(map);
-//            privateMessage.setContent(message.getContent());
-//
-//        }
-//    }
+    public void onMessage(String content) throws IOException {
+        Message message = new Message();
+        message.setContent(content);
+        message.setSender(username);
+
+        broadcast(message.toJson());
+        broadcast(routetab.toString());
+  }
 
     @OnError
     public void onError(Session session, Throwable error){

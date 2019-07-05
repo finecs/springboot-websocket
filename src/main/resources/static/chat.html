@@ -9,6 +9,12 @@
     <script src="js/file.js"></script>
     <script src="js/chat.js"></script>
     <scrpit src="js/index.js"></scrpit>
+    <script>
+        var username = window.localStorage.getItem("username");
+        if (username == null)
+            window.location.href = "http://" + window.location.href.split('/')[2] + "/index.html";
+    </script>
+
 
     <body>
         <div id="chat">
@@ -19,10 +25,10 @@
                         <p class="name" id="name1"></p>
                     </header>
                     <footer>
-                        <input class="search" placeholder="查找用户...">
+                        <p class="search">用户列表</p>
                     </footer>
                 </div>
-                <div class="m-list">
+                <div class="m-list" id="list">
                     <ul>
                         <li class="active">
                             <img class="avatar" width="30" height="30" alt="范颖" src="img/c.jpg">
@@ -38,45 +44,18 @@
             <div class="main">
                 <div class="m-message" id="chat-message">
                     <ul>
-                        <li>
-                            <p class="time">
-                                <span>14:20</span>
-                            </p>
-                            <div class="main">
-                                <img class="avatar" width="30" height="30" src="img/c.jpg">
-                                <div class="text">
-                                    "Hello,这是一个聊天界面，欢迎使用"
-                                </div>
-                            </div>
-                        </li>
-                        <li>
-                            <p class="time">
-                                <span>14:20</span>
-                            </p>
-                            <div class="main">
-                                <img class="avatar" width="30" height="30" src="img/white.jpg">
-                                <div class="text">
-                                    "开始聊天吧"
-                                </div>
-                            </div>
-                        </li>
                     </ul>
                 </div>
                 <div class="m-text">
-                    <!--表情包-->
-                    <button onclick=div1.style.display=""><img src="img/t4.jpg"
-						style="margin-top:0%;height:20px;width:20px"></button>
-                    <!--上传本地图片-->
-                    <button><img src="img/t5.jpg" style="margin-top:0%;height:20px;width:20px"></button>
+                    <input type="file" id="img" style="display: none" onchange="up_img(this)">
+                    <button class="myBtn" onclick="imgBtn()">GIF</button>
                     <!--上传文件-->
                     <input type="file" id="file" style="display: none" onchange="upload(this)">
                     <button class="myBtn" onclick="fileBtn()">上传文件</button>
+                    <textarea placeholder="在此编辑发送" id="textarea"></textarea>
+                    <button style="margin-left: 90%" onclick="send()">发送</button>
 
-                    <button onclick="send()">发送</button>
 
-                    <!--语音聊天-->
-                    <button><img src="img/t3.jpg" style="margin-top:0%;height:20px;width:20px"></button>
-                    <textarea placeholder="按 Ctrl + Enter 发送" id="textarea"></textarea>
                 </div>
                 <!--表情包存放-->
                 <div id=div1 style=display:none class="imgw">

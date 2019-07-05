@@ -1,5 +1,7 @@
 package com.fine.websocket.domain;
 
+import com.google.gson.Gson;
+
 import java.util.List;
 
 /**
@@ -8,9 +10,19 @@ import java.util.List;
  * content消息内容
  */
 public class Message {
+
+    private int type;
     private String sender;
     private List<String> receiver;
     private String content;
+    public int getType() {
+        return type;
+    }
+
+    public void setType(int type) {
+        this.type = type;
+    }
+
 
     public String getSender() {
         return sender;
@@ -24,7 +36,7 @@ public class Message {
         return receiver;
     }
 
-    public void setReceiver(List receiver) {
+    public void setReceiver(List<String> receiver) {
         this.receiver = receiver;
     }
 
@@ -38,4 +50,9 @@ public class Message {
         this.content = content;
     }
 
+    public String toJson(){
+        return gson.toJson(this);
+    }
+
+    private static Gson gson=new Gson();
 }

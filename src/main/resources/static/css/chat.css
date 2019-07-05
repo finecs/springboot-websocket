@@ -1,367 +1,391 @@
 *,
 *:before,
 *:after {
-	box-sizing: border-box;
+    box-sizing: border-box;
 }
 
 body,
 html {
-	height: 100%;
-	overflow: hidden;
+    height: 100%;
+    overflow: hidden;
 }
 
 body {
-	color: #4d4d4d;
-	font: 14px/1.4em 'Helvetica Neue', helvetica, 'Microsoft Yahei', Arial, sans-serif;
-	background: #f5f5f5 url(../img/b.jpg) no-repeat center;
-	background-size: cover;
-	font-smoothing: antialiased;
+    color: #4d4d4d;
+    font: 14px/1.4em 'Helvetica Neue', helvetica, 'Microsoft Yahei', Arial, sans-serif;
+    background: #f5f5f5 url(../img/b.jpg) no-repeat center;
+    background-size: cover;
+    font-smoothing: antialiased;
 }
 
 ul {
-	list-style: none;
+    list-style: none;
 }
 
 #chat {
-	margin: 20px auto;
-	width: 800px;
-	height: 600px;
+    margin: 20px auto;
+    width: 800px;
+    height: 600px;
 }
 
 #chat {
-	overflow: hidden;
-	border-radius: 3px
+    overflow: hidden;
+    border-radius: 3px
 }
 
 #chat .main,
 #chat .sidebar {
-	height: 100%
+    height: 100%
 }
 
 #chat .sidebar {
-	float: left;
-	width: 200px;
-	color: #f4f4f4;
-	background-color: #2e3238
+    float: left;
+    width: 200px;
+    color: #f4f4f4;
+    background-color: #2e3238
 }
 
 #chat .main {
-	position: relative;
-	overflow: hidden;
-	background-color: #eee
+    position: relative;
+    overflow: hidden;
+    background-color: #eee
 }
 
 #chat .m-text {
-	position: absolute;
-	width: 100%;
-	bottom: 0;
-	left: 0
+    position: absolute;
+    width: 100%;
+    bottom: 0;
+    left: 0
 }
 
 #chat .m-message {
-	height: calc(100% - 10pc)
+    height: calc(100% - 10pc)
 }
 
 .m-card {
-	padding: 9pt;
-	border-bottom: 1px solid #24272c
+    padding: 9pt;
+    border-bottom: 1px solid #24272c
 }
 
 .m-card footer {
-	margin-top: 10px
+    margin-top: 10px
 }
 
 .m-card .avatar,
 .m-card .name {
-	vertical-align: middle
+    vertical-align: middle
 }
 
 .m-card .avatar {
-	border-radius: 2px
+    border-radius: 2px
 }
 
 .m-card .name {
-	display: inline-block;
-	margin: 0 0 0 15px;
-	font-size: 1pc
+    display: inline-block;
+    margin: 0 0 0 15px;
+    font-size: 1pc
 }
 
 .m-card .search {
-	padding: 0 10px;
-	width: 100%;
-	font-size: 9pt;
-	color: #fff;
-	height: 30px;
-	line-height: 30px;
-	border: 1px solid #3a3a3a;
-	border-radius: 4px;
-	outline: 0;
-	background-color: #26292e
+    padding: 0 10px;
+    width: 100%;
+    font-size: 9pt;
+    color: #fff;
+    height: 30px;
+    line-height: 30px;
+    border: 1px solid #3a3a3a;
+    border-radius: 4px;
+    outline: 0;
+    background-color: #26292e
 }
 
 .m-list li {
-	padding: 9pt 15px;
-	border-bottom: 1px solid #292c33;
-	cursor: pointer;
-	-webkit-transition: background-color .1s;
-	transition: background-color .1s
+    padding: 9pt 15px;
+    border-bottom: 1px solid #292c33;
+    cursor: pointer;
+    -webkit-transition: background-color .1s;
+    transition: background-color .1s
 }
 
 .m-list li:hover {
-	background-color: hsla(0, 0%, 100%, .03)
+    background-color: hsla(0, 0%, 100%, .03)
 }
 
 .m-list li.active {
-	background-color: hsla(0, 0%, 100%, .1)
+    background-color: hsla(0, 0%, 100%, .1)
 }
 
 .m-list .avatar,
 .m-list .name {
-	vertical-align: middle
+    vertical-align: middle
 }
 
 .m-list .avatar {
-	border-radius: 2px
+    border-radius: 2px
 }
 
 .m-list .name {
-	display: inline-block;
-	margin: 0 0 0 15px
+    display: inline-block;
+    margin: 0 0 0 15px
 }
 
 .m-text {
-	height: 10pc;
-	border-top: 1px solid #ddd
+    height: 10pc;
+    border-top: 1px solid #ddd
 }
 
 .m-text textarea {
-	padding: 10px;
-	height: 100%;
-	width: 100%;
-	border: none;
-	outline: 0;
-	font-family: Micrsofot Yahei;
-	resize: none
+    padding: 10px;
+    height: 60%;
+    width: 100%;
+    border: none;
+    outline: 0;
+    font-family: Micrsofot Yahei;
+    resize: none
 }
 
 .m-message {
-	padding: 10px 15px;
-	overflow-y: scroll
+    padding: 10px 15px;
+    overflow-y: scroll
 }
 
 .m-message li {
-	margin-bottom: 15px
+    margin-bottom: 15px
 }
 
 .m-message .time {
-	margin: 7px 0;
-	text-align: center
+    margin: 7px 0;
+    text-align: center
 }
 
 .m-message .time>span {
-	display: inline-block;
-	padding: 0 18px;
-	font-size: 9pt;
-	color: #fff;
-	border-radius: 2px;
-	background-color: #dcdcdc
+    display: inline-block;
+    padding: 0 18px;
+    font-size: 9pt;
+    color: #fff;
+    border-radius: 2px;
+    background-color: #dcdcdc
 }
 
 .m-message .avatar {
-	float: left;
-	margin: 0 10px 0 0;
-	border-radius: 3px
+    float: left;
+    margin: 0 10px 0 0;
+    border-radius: 3px
 }
 
 .m-message .text {
-	display: inline-block;
-	position: relative;
-	padding: 0 10px;
-	max-width: calc(100% - 40px);
-	min-height: 30px;
-	line-height: 2.5;
-	font-size: 9pt;
-	text-align: left;
-	word-break: break-all;
-	background-color: #fafafa;
-	border-radius: 4px
+    display: inline-block;
+    position: relative;
+    padding: 0 10px;
+    max-width: calc(100% - 40px);
+    min-height: 30px;
+    line-height: 2.5;
+    font-size: 9pt;
+    text-align: left;
+    word-break: break-all;
+    background-color: #fafafa;
+    border-radius: 4px
 }
 
 .m-message .text:before {
-	content: " ";
-	position: absolute;
-	top: 9px;
-	right: 100%;
-	border: 6px solid transparent;
-	border-right-color: #fafafa
+    content: " ";
+    position: absolute;
+    top: 9px;
+    right: 100%;
+    border: 6px solid transparent;
+    border-right-color: #fafafa
 }
 
 .m-message .self {
-	text-align: right
+    text-align: right
 }
 
 .m-message .self .avatar {
-	float: right;
-	margin: 0 0 0 10px
+    float: right;
+    margin: 0 0 0 10px
 }
 
 .m-message .self .text {
-	background-color: #b2e281
+    background-color: #b2e281
 }
 
 .m-message .self .text:before {
-	right: inherit;
-	left: 100%;
-	border-right-color: transparent;
-	border-left-color: #b2e281
+    right: inherit;
+    left: 100%;
+    border-right-color: transparent;
+    border-left-color: #b2e281
 }
 
-/* ---------------------------------------------------表情包部分------------------------------------------------------ */
-#div1 {
-	position: absolute;
-	right: 400px;
-	top: 34%;
-	width: 200px;
-	border: 1px solid #AAAAAA;
-	box-shadow: 4px 4px 6px #AAAAAA
+.chat_img {
+    height: 200px;
+    width: 200px;
 }
+
+
+/* ---------------------------------------------------表情包部分------------------------------------------------------ */
+
+#div1 {
+    position: absolute;
+    right: 400px;
+    top: 34%;
+    width: 200px;
+    border: 1px solid #AAAAAA;
+    box-shadow: 4px 4px 6px #AAAAAA
+}
+
 .imgw {
-	position: relative;
+    position: relative;
 }
 
 .words {
-	position: absolute;
-	top: 0%;
-	left: 237%;
+    position: absolute;
+    top: 0%;
+    left: 237%;
 }
+
 .words1 {
-	position: absolute;
-	top: 0%;
-	left: 212%;
+    position: absolute;
+    top: 0%;
+    left: 212%;
 }
+
 .words2 {
-	position: absolute;
-	top: 0%;
-	left: 186.7%;
+    position: absolute;
+    top: 0%;
+    left: 186.7%;
 }
+
 .words3 {
-	position: absolute;
-	top: 0%;
-	left: 160%;
+    position: absolute;
+    top: 0%;
+    left: 160%;
 }
+
 .words4 {
-	position: absolute;
-	top: 0%;
-	left: 134.1%;
+    position: absolute;
+    top: 0%;
+    left: 134.1%;
 }
+
 .words5 {
-	position: absolute;
-	top: 0%;
-	left: 107.8%;
+    position: absolute;
+    top: 0%;
+    left: 107.8%;
 }
+
 .words6 {
-	position: absolute;
-	top: 0%;
-	left: 81%;
+    position: absolute;
+    top: 0%;
+    left: 81%;
 }
+
 .words7 {
-	position: absolute;
-	top: 0%;
-	left: 54.2%;
+    position: absolute;
+    top: 0%;
+    left: 54.2%;
 }
+
 .words8 {
-	position: absolute;
-	top: 0%;
-	left: 26.9%;
+    position: absolute;
+    top: 0%;
+    left: 26.9%;
 }
+
 .words9 {
-	position: absolute;
-	top: 0%;
-	left: 0%;
+    position: absolute;
+    top: 0%;
+    left: 0%;
 }
+
 .words10 {
-	position: absolute;
-	top: 20%;
-	left: 0%;
+    position: absolute;
+    top: 20%;
+    left: 0%;
 }
+
 .words11 {
-	position: absolute;
-	top: 20%;
-	left: 212%;
+    position: absolute;
+    top: 20%;
+    left: 212%;
 }
+
 .words12 {
-	position: absolute;
-	top: 20%;
-	left: 186.7%;
+    position: absolute;
+    top: 20%;
+    left: 186.7%;
 }
+
 .words13 {
-	position: absolute;
-	top: 20%;
-	left: 160%;
+    position: absolute;
+    top: 20%;
+    left: 160%;
 }
+
 .words14 {
-	position: absolute;
-	top: 20%;
-	left: 134.1%;
+    position: absolute;
+    top: 20%;
+    left: 134.1%;
 }
+
 .words15 {
-	position: absolute;
-	top: 20%;
-	left: 107.8%;
+    position: absolute;
+    top: 20%;
+    left: 107.8%;
 }
+
 .words16 {
-	position: absolute;
-	top: 20%;
-	left: 81%;
+    position: absolute;
+    top: 20%;
+    left: 81%;
 }
+
 .words17 {
-	position: absolute;
-	top: 20%;
-	left: 54.2%;
+    position: absolute;
+    top: 20%;
+    left: 54.2%;
 }
+
 .words18 {
-	position: absolute;
-	top: 20%;
-	left: 26.9%;
+    position: absolute;
+    top: 20%;
+    left: 26.9%;
 }
+
+
 /* ------------------------------------------------下一个------------------------------------------------------------ */
- 
-        .file {
-           position: relative;/*绝对定位!*/
-           display: inline-block;/*设置为行内元素*/
-           
-          
-           overflow: hidden;
-          
-           text-decoration: none;
-           text-indent: 0;
-   
-       }
-       .file input {
-           position: absolute;/*相对定位*/
-           right: 0;
-           top: 20px;
-           opacity: 0;/*将上传组件设置为透明的*/
-           font-size: 100px;
-       }
-       .file:hover {
-          
-           border-color: #78C3F3;
-           color: #004974;
-           text-decoration: none;
-	   }
-	   
 
+.file {
+    position: relative;
+    /*绝对定位!*/
+    display: inline-block;
+    /*设置为行内元素*/
+    overflow: hidden;
+    text-decoration: none;
+    text-indent: 0;
+}
 
+.file input {
+    position: absolute;
+    /*相对定位*/
+    right: 0;
+    top: 20px;
+    opacity: 0;
+    /*将上传组件设置为透明的*/
+    font-size: 100px;
+}
 
+.file:hover {
+    border-color: #78C3F3;
+    color: #004974;
+    text-decoration: none;
+}
 
-
-	   .myBtn{
-		padding: 5px 10px;
-		background: rgb(92,184,92);
-		color: white;
-		outline: none;
-		border: none;
-		border-radius: 5px;
-		cursor: pointer;
-	}
+.myBtn {
+    padding: 5px 10px;
+    background: rgb(92, 184, 92);
+    color: white;
+    outline: none;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
