@@ -2,7 +2,7 @@ var websocket = null;
 
 function conectWebsocket() {
 
-    //判断当前浏览器是否支持WebSocket  
+    //判断当前浏览器是否支持WebSocket 
     if ('WebSocket' in window) {
         websocket = new WebSocket("ws://" + window.location.href.split('/')[2] + "/websocket/" + username);
     } else {
@@ -29,12 +29,12 @@ function conectWebsocket() {
             name_list = event.data.substring(1, event.data.length - 1).split(",");
             for (i = 0; i < name_list.length; i++) {
                 list.append("<li>" + name_list[i].split("=")[1] + "</li>")
-
             }
         } else {
             message = event.data;
             message = JSON.parse(message);
             setMessageInnerHTML(message);
+
         }
     }
 
