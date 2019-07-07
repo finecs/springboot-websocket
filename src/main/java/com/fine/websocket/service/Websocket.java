@@ -22,10 +22,8 @@ public class Websocket {
     //线程安全的无序集合,用一个集合保存当前所有连接
     private static CopyOnWriteArraySet<Websocket> websockets = new CopyOnWriteArraySet<>();
 
-    //在线列表,列表必须绑定用户名和会话，前端点击就能进入私聊会话
-
-    //路由表,session和用户名绑定，路由表即时会话列表
-    private static Map<Session, String> routetab = new HashMap<>();
+    //在线用户列表,列表必须绑定用户名和会话
+    private static Map<String, Session> userList = new HashMap<>();
 
     //对指定session发送消息，即对指定用户发送消息
     public void send(String content,Session session) {
@@ -46,25 +44,25 @@ public class Websocket {
         this.session = session;
         this.username = username;
         websockets.add(this);
-        routetab.put(session,username);
+        userList.put(username, session);
         String content = username + "进入了聊天室，当前人数："+ websockets.size();
         Message message=new Message();
         message.setSender("系统消息：");
         message.setContent(content);
         broadcast(message.toJson());
-        broadcast(routetab.toString());
+        broadcast(userList.toString());
     }
 
     @OnClose
     public void onClose() throws IOException {
         websockets.remove(this);
-        routetab.remove(session);
+        userList.remove(username);
         Message message=new Message();
         String content = username + "离开了聊天室，当前人数："+ websockets.size();
         message.setContent(content);
         message.setSender("系统消息：");
         broadcast(message.toJson());
-        broadcast(routetab.toString());
+        broadcast(userList.toString());
     }
 
     @OnMessage
@@ -74,7 +72,7 @@ public class Websocket {
         message.setSender(username);
 
         broadcast(message.toJson());
-        broadcast(routetab.toString());
+        broadcast(userList.toString());
   }
 
     @OnError

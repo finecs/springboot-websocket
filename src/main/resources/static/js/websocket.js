@@ -28,7 +28,7 @@ function conectWebsocket() {
         if (event.data.indexOf("=") != -1) {
             name_list = event.data.substring(1, event.data.length - 1).split(",");
             for (i = 0; i < name_list.length; i++) {
-                list.append("<li>" + name_list[i].split("=")[1] + "</li>")
+                list.append("<li>" + name_list[i].split("=")[0] + "</li>")
             }
         } else {
             message = event.data;
