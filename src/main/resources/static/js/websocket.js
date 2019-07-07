@@ -41,7 +41,7 @@ function conectWebsocket() {
     //连接关闭的回调方法  
     websocket.onclose = function() {
         var chat = $("#chat-message>ul");
-        chat.append("<li>" + "<p  class=\"time\"><span>" + get_time() + "</span></p>" + "<br />" + "<p> 关闭连接，您已从聊天室退出 </p></li>")
+        chat.append("<li>" + "<p  class=\"time\"><span>" + get_time() + "</span></p>" + "<p> 关闭连接，您已从聊天室退出 </p></li>")
     }
 
     //监听窗口关闭事件，当窗口关闭时，主动去关闭websocket连接，防止连接还没断开就关闭窗口，server端会抛异常。  
@@ -57,7 +57,7 @@ function conectWebsocket() {
 //将消息显示在网页上  
 function setMessageInnerHTML(message) {
     var chat = $("#chat-message>ul");
-    chat.append("<li>" + "<p  class=\"time\"><span>" + get_time() + "</span></p>" + "<br />" + "<p>" + message.sender + "</p>" + "<span class=\"text\">" + message.content + "</span>" + '</li>');
+    chat.append("<li>" + "<p  class=\"time\"><span>" + get_time() + "</span></p>" + "<p>" + message.sender + "</p>" + "<span class=\"text\">" + message.content + "</span>" + '</li>');
 
 }
 
@@ -77,3 +77,4 @@ function send() {
     websocket.send(message);
     $("#textarea").val("");
 }
+$(document).ready(conectWebsocket());
