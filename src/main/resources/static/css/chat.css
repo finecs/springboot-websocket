@@ -3,22 +3,15 @@
 *:after {
     box-sizing: border-box;
 }
-
-body,
-html {
-    height: 100%;
-    
-}
-body {
-    overflow-y: scroll;
-}
-
+html{height: 100%;}
 body {
     color: #4d4d4d;
     font: 14px/1.4em 'Helvetica Neue', helvetica, 'Microsoft Yahei', Arial, sans-serif;
-    background: #f5f5f5 url(../img/b.jpg) no-repeat center;
+    background: #f5f5f5 url(../img/b.jpg) repeat center;
     background-size: cover;
     font-smoothing: antialiased;
+    margin: 0;
+    padding: 0;
 }
 
 ul {

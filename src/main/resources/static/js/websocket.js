@@ -58,7 +58,7 @@ function conectWebsocket() {
 function setMessageInnerHTML(message) {
     var chat = $("#chat-message>ul");
     chat.append("<li>" + "<p  class=\"time\"><span>" + get_time() + "</span></p>" + "<p>" + message.sender + "</p>" + "<span class=\"text\">" + message.content + "</span>" + '</li>');
-
+    document.getElementById("chat-message").firstElementChild.lastElementChild.scrollIntoView(); 
 }
 
 //关闭连接  
