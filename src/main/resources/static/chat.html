@@ -50,8 +50,8 @@
                     <!--上传文件-->
                     <input type="file" id="file" style="display: none" onchange="upload(this)">
                     <button class="myBtn" onclick="fileBtn()">上传文件</button>
-                    <textarea placeholder="在此编辑发送" id="textarea"></textarea>
-                    <button style="margin-left: 90%" onclick="send()">发送</button>
+                    <textarea placeholder="在此编辑发送" id="textarea" onkeydown="keySend(event)"></textarea>
+                    <button style="margin-left: 90%" onclick="send()" >发送</button>
 
 
                 </div>

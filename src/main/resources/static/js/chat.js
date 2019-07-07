@@ -66,3 +66,8 @@ function up_img(file) {
     }
 }
 
+function keySend(event) {
+    if (event.ctrlKey && event.keyCode == 13) {
+    send();
+    }
+}
